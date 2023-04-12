@@ -1,0 +1,89 @@
+/* Centrer le contenu de la page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #F2F2F2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Titre */
+h1 {
+    color: #1DA1F2;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* Liens */
+a {
+    color: #1DA1F2;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Contenu des posts */
+div {
+    margin-bottom: 30px;
+    width: 60%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #BFBFBF;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+div img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+div hr {
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    height: 1px;
+    background-color: #E8E8E8;
+}
+
+/* Bouton */
+button {
+    background-color: #1DA1F2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0F8FE8;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
