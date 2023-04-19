@@ -1,86 +1,83 @@
 .post-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-    max-width: 600px;
-    background-color: white;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    margin-top: 20px;
-  }
-  
-  .post-container img {
-    width: 100%;
-    max-width: 100px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .post-container article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    margin-top: 10px;
-  }
-  
-  .post-container h2 {
-    margin: 0;
-  }
-  
-  .post-container ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .post-container li {
-    margin-bottom: 5px;
-  }
-  
-  .post-container p {
-    margin: 0;
-    text-align: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 900px;  
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-top: 20px;
+  align-items: center;
+}
 
-  .post-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    max-width: 600px;
-    background-color: white;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    margin-top: 20px;
-  }
- 
-   .buttons-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    margin-top: auto;
-  }
-  
-  .post-container button {
-    margin-left: 10px;
-    background-color: #1da1f2;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .post-container button:first-child {
-    margin-left: 0;
-  }
-  
-  
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.user-info h2 {
+  margin: 0;
+}
+
+.post-container img {
+  width: 25%;
+  max-width: 100px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-top: -10px;
+  align-self: flex-start;
+  margin-left: auto; 
+}
+
+.post-info {
+  align-self: flex-start;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.post-container p {
+  margin: 0;
+  text-align: center;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.buttons-container form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-container button { 
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 50px;
+}
+
+.content {
+  margin: 0 auto; 
+  text-align: center;
+  font-size: 1.2rem; 
+  line-height: 1.5;
+  word-wrap: break-word;
+  max-width: 80ch; /* limiter la largeur du contenu à 100 caractères */
+}
+

@@ -68,14 +68,17 @@ echo"test est vrai";
     <title>Fils Twitter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles\styles.css">
+    <link rel="stylesheet" href="Styles\style_fils.css">
 </head>
 <body>
     <h1>Fils Twitter</h1>
     <div>
         <p><a href="ajouteramis.php">Ajouter des amis</a></p>
         <p><a href="voirlisteamis.php">Voir la liste d'amis</a></p>
-
+        <p><a href="profil.php">Revenir au Profil</a></p>
+        <p><a href="fils.php">Remonter le fil d'actualité</a></p>
+        <p><a href="index.php">Se deconnecter</a></p> 
+    </div>
         <?php
         // Requête SQL pour récupérer les informations des amis de l'utilisateur pour chaque post
         if($test&&$result2->num_rows){    
@@ -84,44 +87,46 @@ echo"test est vrai";
                 $sql_amis = "SELECT * FROM utilisateur WHERE id_utilisateur={$row['id_utilisateur']}";
                 $result_amis = $bdd->query($sql_amis);
                 $row_amis=$result_amis->fetch_assoc();
-                ?>
-
-                <div>
-                    <p><?php echo $row_amis['nom_utilisateur']; ?></p>
-                    <p><?php echo $row_amis['id_utilisateur']; ?></p>
-                    <img src="<?php echo $row_amis['photo']; ?>" alt="Photo de profil" style="width: 3%;">   
-                    <p><?php echo $row['contenu']; ?></p>
-                    <p><?php echo $row['date_de_creation']; ?></p>
-                   
-                    <form method="post" action="ajouterlike.php">
-                        <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
-                        <button type="submit">Like</button>
-                        
-                    </form>
 
 
-                    
-                    <form method="POST" action="commentaire.php">
-                        <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
-                        <button type="submit" name="mon_bouton" value=<?php $row['id_post']?>>Commenter</button>                         
+                // Requête SQL pour récupérer le nombre de likes du post            
+                $id_post = $row['id_post'];
+                // Requête SQL pour récupérer le nombre de likes du post
+                $sql = "SELECT COUNT(*) as nb_likes FROM `post_like` WHERE post_id = $id_post";
+                $result = $bdd->query($sql);
+                $row_like = $result->fetch_assoc();
+                $nb_likes = $row_like['nb_likes'];
+                ?>            
 
-                        
-                         <?php //$_SESSION['id_post']=$row['id_post'];
-                         $_SESSION['nom_utilisateurpost']=$row_amis['nom_utilisateur'];
-                         ?>
-                    </form>
-                    <?php
-                    $id_post = $row['id_post'];
-                    // Requête SQL pour récupérer le nombre de likes du post
-                    $sql = "SELECT COUNT(*) as nb_likes FROM `post_like` WHERE post_id = $id_post";
-                    $result = $bdd->query($sql);
-                    $row_like = $result->fetch_assoc();
-                    $nb_likes = $row_like['nb_likes'];
-                    ?>
-                    <p><?php echo $nb_likes; ?> likes</p>
-                    
-                    <hr>
-                </div>
+                        <div class="post-container">
+                            <div class="buttons-container">
+                                <form method="post" action="ajouterlike.php">
+                                    <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
+                                    <button type="submit">Like</button>
+                                </form>
+                                
+                                <form method="POST" action="commentaire.php">
+                                    <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
+                                    <button type="submit" name="mon_bouton" value="<?php echo $row['id_post']; ?>">Commenter</button>
+                                    <?php $_SESSION['nom_utilisateurpost']=$row_amis['nom_utilisateur']; ?>
+                                </form>
+                            </div>
+                            <article>
+                                <h2><?php echo $row_amis['nom_utilisateur']; ?></h2>
+                                <ul>
+                                    <li><?php echo $row_amis['id_utilisateur']; ?></li>
+                                    <li><?php echo $row['date_de_creation']; ?></li>
+                                    <li><?php echo $nb_likes; ?> likes</li>
+                                </ul>
+                                <p><?php echo $row['contenu']; ?></p>
+                                <img src="<?php echo $row_amis['photo']; ?>" alt="Photo de profil">
+                            </article>
+                            
+                        </div>
+
+
+
+
         <?php }
         }
         else
@@ -130,13 +135,5 @@ echo"test est vrai";
             <p><?php echo "Vous n'avez pas encore d'amis"; ?></p>
             <p><?php echo "ajouter des amis pour pouvoir construire votre propre fils d'actualité !";?></p>
             <?php } ?>
-    </div>
-    <div>
-
-	
-	   
-    <p><a href="profil.php">Revenir au Profil</a></p>
-    <p><a href="fils.php">Remonter le fil d'actualité</a></p>
-    <p><a href="index.php">Se deconnecter</a></p>       
-</div> 
-
+    
+  

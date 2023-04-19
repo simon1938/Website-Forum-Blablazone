@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles\style_fils.css">
     <title>Laisser commentaire</title>
 </head>
 <body>
@@ -40,6 +41,31 @@
     <p><?php echo $post['contenu']; ?></p>
     <p>Posté par : <?php echo $nom_utilisateur_post; ?></p>
     <p>Date de création : <?php echo $post['date_de_creation']; ?></p>
+
+    <?php
+    $contenu=$post['contenu'];
+    $date_de_creation=$post['date_de_creation'];    
+// petite requete pour affiche la photo de profil de la personne qui à écrit le post que l'on veux commenter 
+    $query = "SELECT photo FROM utilisateur UTL INNER JOIN post POS ON POS.id_utilisateur=UTL.id_utilisateur WHERE
+     POS.id_post = $id_post";
+    $result = mysqli_query($bdd, $query);
+    $row=mysqli_fetch_assoc($result);
+
+    ?>
+
+          <div class="post-container">
+                <img src="<?php echo $row['photo']; ?>" alt="Photo de profil">
+                <div class="user-info">                                          
+                        <h2><?php echo $nom_utilisateur_post; ?></h2>
+                    </div>
+                    <ul class="post-info">                        
+                       <li><?php echo $date_de_creation; ?></li>                    
+                    </ul>                    
+
+                    <div class="content">
+                    <p><?php echo $contenu;?></p>
+                    </div> 
+            </div>
    
     <?php
 	if($result_comments->num_rows>0){
