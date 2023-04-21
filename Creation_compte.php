@@ -4,6 +4,7 @@
 	<title>Création de compte</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="Styles\styles.css">
 </head>
 <body>
 	<h1>Création de compte</h1>
@@ -20,7 +21,10 @@
 		<label for="age">Âge :</label>
 		<input type="number" id="age" name="age" min="18" required><br>
 
-		<input type="submit" value="Créer mon compte">		
+		<input type="submit" value="Créer mon compte">	
+		
+		<label for="photo">Photo (Falcultatif):</label>
+		<input type="text" id="photo" name="photo"><br>
 	</form>
 </body>
 </html>

@@ -33,30 +33,25 @@
 	
     $post = mysqli_fetch_assoc($result_post);
 
-    $query_comments = "SELECT * FROM commentaires WHERE id_post = '$id_post'";
+    $query_comments = "SELECT * FROM commentaires WHERE id_post = '$id_post' ORDER BY date_de_creation DESC";
     $result_comments = mysqli_query($bdd, $query_comments);
-    ?>
-   
-    <h2>Post:</h2>
-    <p><?php echo $post['contenu']; ?></p>
-    <p>Posté par : <?php echo $nom_utilisateur_post; ?></p>
-    <p>Date de création : <?php echo $post['date_de_creation']; ?></p>
-
-    <?php
+    
     $contenu=$post['contenu'];
     $date_de_creation=$post['date_de_creation'];    
 // petite requete pour affiche la photo de profil de la personne qui à écrit le post que l'on veux commenter 
     $query = "SELECT photo FROM utilisateur UTL INNER JOIN post POS ON POS.id_utilisateur=UTL.id_utilisateur WHERE
-     POS.id_post = $id_post";
+     POS.id_post = $id_post" ;
     $result = mysqli_query($bdd, $query);
     $row=mysqli_fetch_assoc($result);
 
     ?>
-
+<!-- ici c'est l'affichage du post  -->
+      
           <div class="post-container">
+                <h3>Post</h3>
                 <img src="<?php echo $row['photo']; ?>" alt="Photo de profil">
                 <div class="user-info">                                          
-                        <h2><?php echo $nom_utilisateur_post; ?></h2>
+                        <h2>Posté par:  <?php echo $nom_utilisateur_post; ?></h2>
                     </div>
                     <ul class="post-info">                        
                        <li><?php echo $date_de_creation; ?></li>                    
@@ -66,13 +61,27 @@
                     <p><?php echo $contenu;?></p>
                     </div> 
             </div>
-   
+            <h2>Ajouter un commentaire</h2>
+    <form method="POST" action="commentairebdd.php">
+        <label for="commentaire">Contenu du commentaire :</label><br>
+        <textarea id="commentaire" name="commentaire"></textarea><br>
+        <input type="submit" value="Ajouter le commentaire">             
+    </form>
+
+    <div>    
+        <p><a href="profil.php">Revenir au Profil</a></p>
+        <p><a href="fils.php">Retourner au fil d'actualité</a></p>
+        <p><a href="index.php">Se déconnecter</a></p>          
+    </div> 
+
+    <h2>Commentaires du post selectionné : </h2>
     <?php
+    
 	if($result_comments->num_rows>0){
 		while ($comment = mysqli_fetch_assoc($result_comments))
 		{
 			?>
-			<p><?php echo $comment['contenu']; ?></p>
+			
                 <?php
                         $id_commentaire_utilisateur=$comment['id_utilisateur'];
                         //mini requete pour afficher le nom du mec qui as ecrit le post
@@ -86,11 +95,17 @@
                         } else {
                             echo "L'utilisateur avec l'ID $id_utilisateur n'a pas été trouvé.";
                         }
-                        
-            echo "<img src='".$row['photo']."' alt='Photo de profil de ".$row['nom_utilisateur']."' style='width: 3%;'>";?>
-			<p>Posté par : <?php echo $nom_utilisateur; ?></p>
-			<p>Date de création : <?php echo $comment['date_de_creation']; ?></p>
-			<hr>
+                   ?>  
+            <h2>Réponse</h2>
+            <div class="commentaire">
+            <img src="<?php echo $row['photo']; ?>" alt="Photo de profil de <?php echo $row['nom_utilisateur']; ?>">
+            <h3><?php echo $comment['contenu']; ?></h3>
+            <p>Posté par : <?php echo $nom_utilisateur; ?></p>
+            <p>Date de création : <?php echo $comment['date_de_creation']; ?></p>
+            <hr>
+            </div>
+
+
 			<?php
    		}
 	}
@@ -105,17 +120,6 @@
     }
     ?>  
 
-    <h2>Ajouter un commentaire</h2>
-    <form method="POST" action="commentairebdd.php">
-        <label for="commentaire">Contenu du commentaire :</label><br>
-        <textarea id="commentaire" name="commentaire"></textarea><br>
-        <input type="submit" value="Ajouter le commentaire">             
-    </form>
-
-    <div>    
-        <p><a href="profil.php">Revenir au Profil</a></p>
-        <p><a href="fils.php">Retourner au fil d'actualité</a></p>
-        <p><a href="index.php">Se déconnecter</a></p>          
-    </div> 
+    
 </body>
 </html>

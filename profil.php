@@ -4,7 +4,8 @@
 	<title>Profil utilisateur</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+	<link rel="stylesheet" href="Styles\styles.css">
+	</head>
 <body>
 <?php
 
@@ -37,9 +38,9 @@ $result = $bdd->query($sql);
 
 // Affichage des derniers posts de l'utilisateur
 if ($result->num_rows > 0) {
-    echo '<h2>Derniers posts</h2>';	
+    echo '<h2>Derniers posts</h2><hr>';	
     while ($row = $result->fetch_assoc()) {
-        echo '<p>'.$row['contenu'].'</p>';		
+        echo '<p>-- '.$row['contenu'].' --</p><hr>';		
     }
 } else {
     echo '<p>Pas de post pour le moment.</p>';

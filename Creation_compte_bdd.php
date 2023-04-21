@@ -3,7 +3,7 @@
 <head>
 	<title>Création de compte</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
 </head>
 <body>
 	<h1>Création de compte</h1>
@@ -21,8 +21,14 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 	$pseudo = $_POST['pseudo'];
 	$age = $_POST['age'];
 	$motdepasse=md5($_POST['motdepasse']);
-	$photo="Pictures/account_picture.png";	
+	if(isset($_POST['photo'])){
+		$photo=$_POST['photo'];		
+	}
+	else
+	{
+		$photo="Pictures/account_picture.png";	
 
+	}
 	
 	// Vérifier si l'email n'existe pas déjà dans la base de données
 	$sql_check_email = "SELECT email FROM utilisateur WHERE email = '$email'";

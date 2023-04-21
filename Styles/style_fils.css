@@ -81,3 +81,142 @@
   max-width: 80ch; /* limiter la largeur du contenu à 100 caractères */
 }
 
+
+
+
+
+/* utile à toute les pages Styles pour les liens hypertextes */
+a {
+  color: #0077cc;
+  text-decoration: none;
+  border-bottom: 1px solid #0077cc;
+}
+a:hover {
+  background-color: #0077cc;
+  color: #fff;
+}
+
+/* Styles pour le formulaire de commentaire */
+form {
+  margin: 0 auto; /* pour centrer le formulaire */
+  max-width: 500px; /* pour limiter la largeur du formulaire */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+  
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  resize: none;
+}
+input[type="submit"] {
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background-color: #005799;
+}
+
+/* Styles pour les liens en bas de la page */
+div {
+  margin-top: 20px;
+  text-align: left; /* alignement à gauche */
+}
+p {
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+/* Styles pour les commentaires */
+.commentaire {
+  display: flex; /* afficher les commentaires en flexbox */
+  flex-direction: column; /* empiler les éléments en colonne */
+  align-items: center; /* centrer les éléments horizontalement */
+  margin: 20px 0; /* espacement entre les commentaires */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ombre portée */
+}
+.commentaire img {
+  margin-right: auto;
+  width: 3%;
+  margin-right: 250px;
+  border-radius: 50%; /* arrondir l'image */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ombre portée */
+}
+.commentaire h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  
+}
+.commentaire p {
+  margin: 10px 0;
+}
+.commentaire hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+  width: 100%;
+}
+ h4 {
+  
+  text-align: left;
+  font-size: 25; 
+} 
+.post-container h3 {
+  margin-right: auto;
+  font-size: 26px;
+  text-align: left ;
+}
+
+
+
+body {
+  background-color: #4968e6;
+}
+h1{
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+h2{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+a {
+  color: white;
+  background-color: blue;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a:hover {
+  background-color: lightblue;
+}

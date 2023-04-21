@@ -5,7 +5,7 @@ require_once('accesbdd.php');
 // Récupération de l'id de l'utilisateur connecté
 session_start();
 //$id_utilisateur = $_SESSION['id'];
-$id_utilisateur=20;
+$id_utilisateur=$_SESSION['id'];
 echo"===== utilisateur numero".$id_utilisateur."========";
 
 
