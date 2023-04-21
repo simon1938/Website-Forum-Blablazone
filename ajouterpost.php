@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Ajouter un post</title>
+	<link rel="stylesheet" href="Styles\styles.css">
 </head>
 <body>
 	<h1>Ajouter un post</h1>

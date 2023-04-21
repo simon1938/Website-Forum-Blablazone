@@ -77,7 +77,7 @@ echo"test est vrai";
         <p><a href="ajouteramis.php">Ajouter des amis</a></p>
         <p><a href="voirlisteamis.php">Voir la liste d'amis</a></p>
         <p><a href="profil.php">Revenir au Profil</a></p>
-        <p><a href="fils.php">Remonter le fil d'actualité</a></p>
+        <p class="scroll"><a href="fils.php">Remonter le fil d'actualité</a></p>
         <p><a href="index.php">Se deconnecter</a></p> 
     </div>
         <?php
