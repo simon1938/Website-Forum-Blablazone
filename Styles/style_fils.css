@@ -109,11 +109,12 @@
 
 
 /* utile à toute les pages Styles pour les liens hypertextes */
-a {
-  color: #0077cc;
+.lien a {
+   color: #fff; 
   text-decoration: none;
   border-bottom: 1px solid #0077cc;
 }
+
 a:hover {
   background-color: #0077cc;
   color: #fff;
@@ -160,7 +161,7 @@ div {
   margin-top: 20px;
   text-align: left; /* alignement à gauche */
 }
-p {
+.lien p {
   text-align: left;
   color: rgb(27, 59, 156);
   font-size: 20px;

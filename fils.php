@@ -73,7 +73,7 @@ echo"test est vrai";
 </head>
 <body>
     <h1>Fils Twitter</h1>
-    <div>
+    <div class ="lien">
         <p><a href="ajouteramis.php">Ajouter des amis</a></p>
         <p><a href="voirlisteamis.php">Voir la liste d'amis</a></p>
         <p><a href="profil.php">Revenir au Profil</a></p>

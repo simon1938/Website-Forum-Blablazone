@@ -33,7 +33,14 @@ $Age=$row['age'];
 echo '<h1>Profil de '.$NomUilisateur.'<h1>';
 echo '<p>Âge : <?php $Age ?> ans</p>';
 
-echo '<img src="' .$Photo. '" alt="photo de profil">';
+echo '<img src="' .$Photo. '" alt="photo de profil">';?>
+<div class ="lien">
+        <p><a href="ajouteramis.php">Ajouter des amis</a></p>
+		<p><a href="voirlisteamis.php">Voir la liste d'amis</a></p>
+        <p><a href="fils.php">Voir votre fil d'actualité</a></p>             
+        <p><a href="index.php">Se deconnecter</a></p> 
+    </div>
+<?php
 
 // Requête SQL pour récupérer les dix derniers posts de l'utilisateur
 $sql = "SELECT * FROM post WHERE id_utilisateur = $id_utilisateur ORDER BY date_de_creation DESC LIMIT 10 ";
@@ -69,13 +76,7 @@ if ($result->num_rows > 0) {
 // Fermeture de la connexion
 $bdd->close();
 ?>
-    <div>
-        
-        <p><a href="fils.php">Acceder à son fil</a></p>
-        <p><a href="ajouterpost.php">Ajouter un poste</a></p>
-        <p><a href="modifierleprofil.php">Modifier le profil</a></p>
-
-    </div>
+    
 
 	
 </body>

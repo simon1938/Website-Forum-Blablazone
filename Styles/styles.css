@@ -113,3 +113,15 @@ a:hover {
 }
 
 
+.lien a {
+  color: #fff; 
+ text-decoration: none;
+ border-bottom: 1px solid #0077cc;
+}
+.lien p {
+ text-align: left;
+ color: rgb(27, 59, 156);
+ font-size: 20px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+}
