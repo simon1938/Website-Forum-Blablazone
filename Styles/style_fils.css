@@ -2,13 +2,15 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  max-width: 900px;  
-  background-color: white;
+  /* max-width: 900px;   */
+  background-color: rgb(255, 255, 255);
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin-top: 20px;
   align-items: center;
+  height: 420px;
+  width: 920px;
 }
 
 .user-info {
@@ -18,7 +20,9 @@
   justify-content: center;
   text-align: center;
   margin-bottom: 10px;
+  font-size: 40px;  
 }
+
 
 .user-info h2 {
   margin: 0;
@@ -32,12 +36,14 @@
   margin-top: -10px;
   align-self: flex-start;
   margin-left: auto; 
+  margin-bottom: 10px;
 }
 
-.post-info {
+.post-container .post-info {
   align-self: flex-start;
   margin-left: 10px;
   margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .post-container p {
@@ -70,16 +76,33 @@
   cursor: pointer;
   font-size: 1.2rem;
   height: 50px;
+  border-width: none;
+  
 }
 
-.content {
+/* .content{
   margin: 0 auto; 
   text-align: center;
   font-size: 1.2rem; 
   line-height: 1.5;
   word-wrap: break-word;
-  max-width: 80ch; /* limiter la largeur du contenu à 100 caractères */
+  max-width: 80ch; /* limiter la largeur du contenu à 100 caractères 
+} 
+*/
+.post-container .content {
+  border: 1px solid black;
+  padding: 10px;
+  width: 80%;
+  height: 80%;
 }
+
+
+.post-container .content div h2 {
+  font-size: 24px;
+  width: 80%;
+  height: 80%;
+}
+
 
 
 
@@ -110,6 +133,7 @@ label {
   margin-bottom: 10px;
   
 }
+/* ajouter poste box  */
 textarea {
   width: 100%;
   height: 100px;
@@ -138,7 +162,7 @@ div {
 }
 p {
   text-align: left;
-  color: white;
+  color: rgb(27, 59, 156);
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -164,6 +188,7 @@ p {
   margin-right: 250px;
   border-radius: 50%; /* arrondir l'image */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ombre portée */
+  
 }
 .commentaire h3 {
   margin: 10px 0;
@@ -181,7 +206,7 @@ p {
 }
 .commentaire hr {
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #000000;
   margin: 10px 0;
   width: 100%;
 }
@@ -210,7 +235,7 @@ h1{
 }
 h2{
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -226,3 +251,4 @@ a {
 a:hover {
   background-color: lightblue;
 }
+

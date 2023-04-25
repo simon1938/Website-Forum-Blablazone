@@ -1,6 +1,7 @@
 
 body {
   background-color: #4968e6;
+  padding: 0 20px;
 }
 h1{
   text-align: center;
@@ -35,13 +36,16 @@ label {
 input {
   margin-left: 10px;
 }
-p{
+.post_fil p {
   text-align: center;
   color: white;
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin: 0 50px;
 }
+
+
 
 img[alt="fp"]{
   position: absolute;
@@ -85,3 +89,27 @@ a {
 a:hover {
   background-color: lightblue;
 }
+
+.post_fil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post_fil .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.post_fil button {
+  background-color: #1da1f2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+

@@ -16,3 +16,11 @@ function rediriger_creationC() {
   function rediriger_ajouterpost() {
     window.location.href = "ajouterpost.php";
   }
+  function supprimer(id_post) {
+    window.location.href = 'supprimer.php?id_post=' + id_post;
+  }
+  
+  function modifier(id_post) {
+    window.location.href = 'modifier.php?id_post=' + id_post;
+  }
+  

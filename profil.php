@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Profil utilisateur</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="Styles\styles.css">
-	</head>
+    <title>Profil utilisateur</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles\styles.css">
+</head>
 <body>
+
+
 <?php
 
 include('accesbdd.php');
@@ -29,6 +31,7 @@ $Age=$row['age'];
 
 // Affichage des informations de l'utilisateur
 echo '<h1>Profil de '.$NomUilisateur.'<h1>';
+echo '<p>Âge : <?php $Age ?> ans</p>';
 
 echo '<img src="' .$Photo. '" alt="photo de profil">';
 
@@ -38,9 +41,26 @@ $result = $bdd->query($sql);
 
 // Affichage des derniers posts de l'utilisateur
 if ($result->num_rows > 0) {
-    echo '<h2>Derniers posts</h2><hr>';	
+    echo '<h2>Derniers posts</h2><hr>';
     while ($row = $result->fetch_assoc()) {
-        echo '<p>-- '.$row['contenu'].' --</p><hr>';		
+		//script dans le php car je sais pas pourquoi j'arrivais pas à le faire fonctionner sur un fichier à part
+		echo '<script>';
+		echo 'function supprimer(id_post) {';
+		echo '    window.location.href = "supprimer.php?id_post=" + id_post;';
+		echo '}';
+		echo 'function modifier(id_post) {';
+		echo '    window.location.href = "modifier.php?id_post=" + id_post;';
+		echo '}';
+		echo '</script>';
+		
+		echo '<div class="post_fil">';
+		echo '<p>-- '.$row['contenu'].' --</p>';
+		echo '<div class="buttons">';
+		echo '<button onclick="supprimer(' . $row['id_post'] . ')">Supprimer</button>';
+		echo '<button onclick="modifier(' . $row['id_post'] . ')">Modifier</button>';
+		echo '</div>';
+		echo '</div><hr>';
+		
     }
 } else {
     echo '<p>Pas de post pour le moment.</p>';
@@ -49,14 +69,14 @@ if ($result->num_rows > 0) {
 // Fermeture de la connexion
 $bdd->close();
 ?>
-	<div>		
-		<p>Âge : <?php echo $Age; ?> ans</p>
-		<p><a href="fils.php">Acceder à son fil</a></p>		
+    <div>
+        
+        <p><a href="fils.php">Acceder à son fil</a></p>
         <p><a href="ajouterpost.php">Ajouter un poste</a></p>
-		<p><a href="modifierleprofil.php">Modifier le profil</a></p>
-       
-	</div>
-	
+        <p><a href="modifierleprofil.php">Modifier le profil</a></p>
+
+    </div>
+
 	
 </body>
 </html>

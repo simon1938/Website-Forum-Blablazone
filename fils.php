@@ -102,16 +102,16 @@ echo"test est vrai";
                 <div class="post-container">
                 <img src="<?php echo $row_amis['photo']; ?>" alt="Photo de profil">
                 
-                    <div class="user-info">                                          
-                        <h2><?php echo $row_amis['nom_utilisateur']; ?></h2>
-                    </div>
+                    
                     <ul class="post-info">
-                        <li><?php echo $row_amis['id_utilisateur']; ?></li>
+                        <p>Info :<p>
+                        <li>Post de : <?php echo $row_amis['nom_utilisateur']; ?></li>
                         <li><?php echo $row['date_de_creation']; ?></li>
                         <li><?php echo $nb_likes; ?> likes</li>
                     </ul>                    
 
                     <div class="content">
+                        <p>contenu :</p>
                     <p><?php echo $row['contenu']; ?></p>
                     </div>
                     

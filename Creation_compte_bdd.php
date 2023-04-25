@@ -56,9 +56,11 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 
 			$verif = "Vous avez bien créer un compte bienvenu chez nous ".$_POST['pseudo'];    
 			
-			// Afficher le message d'erreur dans un pop-up
-			echo "<script>alert('" . $verif . "')</script>";
-  			//header('Location: index.php?erreur=' . urlencode($verif));
+			// Afficher le message d'erreur dans un pop-up puis rediriger vers page d'acceuil
+			echo "<script>
+								alert('" . $verif . "');
+								window.location.href='index.php';
+    			</script>";
 		} 
 }else {
 	echo "Erreur: un compte existe déjà sur cette adress mail veuillez directement vous connecter " ;
