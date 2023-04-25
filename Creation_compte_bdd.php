@@ -4,13 +4,18 @@
 	<title>Création de compte</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<link rel="stylesheet" href="Styles\styles.css">
 </head>
 <body>
 	<h1>Création de compte</h1>
 
 	<?php
+	$testmotdepasse=true;
 // Vérifier si le formulaire a été soumis
-if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])) {
+if($_POST['motdepasse']!=$_POST['motdepasse2']){
+	$testmotdepasse=false;
+}
+if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])&&$testmotdepasse) {
 	
 	include('accesbdd.php');
 	// appel de la fonction connect_db()
@@ -21,8 +26,9 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 	$pseudo = $_POST['pseudo'];
 	$age = $_POST['age'];
 	$motdepasse=md5($_POST['motdepasse']);
-	if(isset($_POST['photo'])){
-		$photo=$_POST['photo'];		
+	if($_POST['photo']!=""){
+		$photo=$_POST['photo'];	
+		echo "<script>alert('" . "eefj" . "')</script>";	
 	}
 	else
 	{
@@ -31,6 +37,7 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 	}
 	
 	// Vérifier si l'email n'existe pas déjà dans la base de données
+
 	$sql_check_email = "SELECT email FROM utilisateur WHERE email = '$email'";
 	$result_check_email = $bdd->query($sql_check_email);
 	$email_erreur=false;
@@ -46,6 +53,12 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 
 		if ($bdd->query($sql) === TRUE) {
 			echo "Compte créé avec succès bravo !";
+
+			$verif = "Vous avez bien créer un compte bienvenu chez nous ".$_POST['pseudo'];    
+			
+			// Afficher le message d'erreur dans un pop-up
+			echo "<script>alert('" . $verif . "')</script>";
+  			//header('Location: index.php?erreur=' . urlencode($verif));
 		} 
 }else {
 	echo "Erreur: un compte existe déjà sur cette adress mail veuillez directement vous connecter " ;
@@ -53,6 +66,9 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 
 	// fermer la connexion
 	$bdd->close();
+}else
+{
+  echo "<strong>erreur les deux mot de passe doivent être identiques<strong>";
 }
 ?>
 	

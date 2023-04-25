@@ -4,10 +4,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="Styles\styles.css">
     <title>Blablazone - Connectez-vous et partagez</title>
-    <style>
-      /* Mettre en évidence les liens d'inscription et de connexion */
-     
-    </style>
   </head>
   <body>
     <header>

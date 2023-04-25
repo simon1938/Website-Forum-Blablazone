@@ -15,7 +15,7 @@
 		<input type="email" id="email" name="email" required><br>
 
 		<label for="motdepasse">Mot de passe  : </label>
-		<input type="text" id="motdepasse" name="motdepasse" required><br>	
+		<input type="password" id="motdepasse" name="motdepasse" required><br>	
 		
 		<input type="submit" value="Se connecter">	
 		<p><input type="button" value="Créer un compte" onclick="rediriger_creationC()"></p>
