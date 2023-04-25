@@ -57,7 +57,8 @@ while ($row = $result->fetch_assoc()) {
 // Requête SQL pour récupérer les posts des amis de l'utilisateur
 if($test)
 {
-$sql2 = "SELECT * FROM post WHERE id_utilisateur IN (" . implode(",", $id_amis) . ")";
+ $sql2 = "SELECT * FROM post WHERE id_utilisateur IN (" . implode(",", $id_amis) . ") ORDER BY date_de_creation DESC";
+
 $result2 = $bdd->query($sql2);
 echo"test est vrai";
 }
@@ -74,6 +75,7 @@ echo"test est vrai";
 <body>
     <h1>Fils Twitter</h1>
     <div class ="lien">
+         <p><a href="ajouterpost.php">Ajouter un poste</a></p>
         <p><a href="ajouteramis.php">Ajouter des amis</a></p>
         <p><a href="voirlisteamis.php">Voir la liste d'amis</a></p>
         <p><a href="profil.php">Revenir au Profil</a></p>

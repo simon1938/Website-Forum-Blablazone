@@ -19,10 +19,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	// On exécute la requête SQL
 	if ($bdd->query($sql) === TRUE) {
-	    echo "Le post a été ajouté avec succès !";
+		echo '<script>alert("Le post a été ajouté avec succès !"); window.location.href = "profil.php";</script>';
 	} else {
-	    echo "Erreur : " . $sql . "<br>" . $bdd->error;
+		echo "Erreur lors de l'ajout du post : " . $bdd->error;
 	}
+	
 
 	// On ferme la connexion à la base de données
 	$bdd->close();
