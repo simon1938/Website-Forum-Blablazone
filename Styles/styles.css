@@ -1,8 +1,9 @@
-
+/* fond de la page */
 body {
   background-color: #4968e6;
   padding: 0 20px;
 }
+/* style pour les balise h de  différente importance */
 h1{
   text-align: center;
   color: white;
@@ -17,6 +18,8 @@ h2{
   margin-top: 20px;
   margin-bottom: 20px;
 }
+/* affichage pour les formulaire */
+
 form {
   display: flex;
   flex-direction: column;
@@ -27,6 +30,7 @@ form {
   text-align: center;
 }
 
+
 label {
   display: flex;
   align-items: center;
@@ -36,17 +40,10 @@ label {
 input {
   margin-left: 10px;
 }
-.post_fil p {
-  text-align: center;
-  color: white;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin: 0 50px;
-}
 
 
 
+/* image logo de blablazone */
 img[alt="fp"]{
   position: absolute;
   top: 20px;
@@ -55,6 +52,7 @@ img[alt="fp"]{
   width: 15%;
 
 }
+/* image page slogan du blablazone */
 img[alt="fp2"]{
   position: fixed;
   bottom: 0;
@@ -62,7 +60,9 @@ img[alt="fp2"]{
   padding: 10px;
   width: 25%;
 }
-.highlight, .connexion {
+
+/* bouton inscription et connexion de la page index */
+.inscription, .connexion {
   display: inline-block;
   padding: 12px 24px;
   font-size: 1.2rem;
@@ -78,30 +78,22 @@ main {
   justify-content: flex-end;
   height: 500px; /* Utiliser la hauteur complète de la fenêtre pour centrer les boutons */
 }
-a {
-  color: white;
-  background-color: blue;
-  padding: 10px;
-  text-decoration: none;
-  border-radius: 5px;
-}
 
-a:hover {
-  background-color: lightblue;
-}
 
+/* centrer les post dans la page  */
 .post_fil {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.post_fil .buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+  /* .post_fil .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  } */
 
+/* pour les boutons supprimer et modifier de la page profil  */
 .post_fil button {
   background-color: #1da1f2;
   color: white;
@@ -111,8 +103,31 @@ a:hover {
   cursor: pointer;
   margin: 5px;
 }
+/* style de l'affichage du texte des balises p */
+.post_fil p {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin: 0 50px;
+}
 
 
+/* pour les lien hypertexte */
+
+/* pour la subrillance quand on passe sur les lien hyper texte pour naviguer dans le site */
+a:hover {
+  background-color: lightblue;
+}
+
+a {
+  color: white;
+  background-color: blue;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
 .lien a {
   color: #fff; 
  text-decoration: none;

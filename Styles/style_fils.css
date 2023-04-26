@@ -1,8 +1,13 @@
+/* fond du site */
+body {
+  background-color: #4968e6;
+}
+/* classe post-container represente l'affichage
+ d'un post parmit tout ceux qui peuvent etre affiché sur le fil d'un utilisateur */
 .post-container {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  /* max-width: 900px;   */
+  margin: auto;  
   background-color: rgb(255, 255, 255);
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -12,22 +17,15 @@
   height: 420px;
   width: 920px;
 }
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 40px;  
+.post-container .post-info {
+  align-self: flex-start;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-
-.user-info h2 {
-  margin: 0;
-}
-
+/* gere l'image de l'utilisateuer
+ affiché dans le post an haut à gauche */ 
 .post-container img {
   width: 25%;
   max-width: 100px;
@@ -38,19 +36,21 @@
   margin-left: auto; 
   margin-bottom: 10px;
 }
-
+/* style pour les info en haut à gauche d'un post avec (auteur date et nombre de like) */
+/* sous class post-info */
 .post-container .post-info {
   align-self: flex-start;
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 5px;
 }
+/* style pour les balises p d'un post */
 
 .post-container p {
   margin: 0;
   text-align: center;
 }
-
+/* style pour les boutons d'un post */
 .buttons-container {
   display: flex;
   flex-direction: row;
@@ -59,14 +59,15 @@
   margin-top: 10px;
   width: 100%;
 }
-
+/* commme les boutons envoie des information vers les page ajouter
+ like et laisser un commentaire on à besoin d'un formulaire pour chacun d'entre eux */
 .buttons-container form {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-
+/* mise en forme des boutons du post */
 .buttons-container button { 
   background-color: #1da1f2;
   color: white;
@@ -80,47 +81,29 @@
   
 }
 
-/* .content{
-  margin: 0 auto; 
-  text-align: center;
-  font-size: 1.2rem; 
-  line-height: 1.5;
-  word-wrap: break-word;
-  max-width: 80ch; /* limiter la largeur du contenu à 100 caractères 
-} 
-*/
+/* style pour le contenu du post au centre de la page encadré par une box */
 .post-container .content {
   border: 1px solid black;
   padding: 10px;
   width: 80%;
   height: 80%;
+  word-wrap: break-word; /*pour pas que le contenu ne dépasse de la box noire */
 }
 
-
-.post-container .content div h2 {
-  font-size: 24px;
+.post-container .content p {
+  font-size: 20px;
   width: 80%;
   height: 80%;
 }
 
 
 
-
-
-
-/* utile à toute les pages Styles pour les liens hypertextes */
-.lien a {
-   color: #fff; 
-  text-decoration: none;
-  border-bottom: 1px solid #0077cc;
+div {
+  margin-top: 20px;
+  text-align: left; /* alignement à gauche */
 }
 
-a:hover {
-  background-color: #0077cc;
-  color: #fff;
-}
-
-/* Styles pour le formulaire de commentaire */
+/* Styles pour le formulaire de la page commentaire */
 form {
   margin: 0 auto; /* pour centrer le formulaire */
   max-width: 500px; /* pour limiter la largeur du formulaire */
@@ -134,7 +117,7 @@ label {
   margin-bottom: 10px;
   
 }
-/* ajouter poste box  */
+/* ajouter poste box/commenraire/modifier  */
 textarea {
   width: 100%;
   height: 100px;
@@ -144,6 +127,7 @@ textarea {
   border: 1px solid #ddd;
   resize: none;
 }
+/* style pour l'ajout d'un commentaire à un post */
 input[type="submit"] {
   background-color: #0077cc;
   color: #fff;
@@ -157,10 +141,6 @@ input[type="submit"]:hover {
 }
 
 /* Styles pour les liens en bas de la page */
-div {
-  margin-top: 20px;
-  text-align: left; /* alignement à gauche */
-}
 .lien p {
   text-align: left;
   color: rgb(27, 59, 156);
@@ -191,41 +171,11 @@ div {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ombre portée */
   
 }
-.commentaire h3 {
-  margin: 10px 0;
-  font-size: 16px;
-  
-}
-.scroll a[href="fils.php"] {
-  position: fixed;
-  bottom: 0;
-}
+
 
 .commentaire p {
   margin: 10px 0;
   
-}
-.commentaire hr {
-  border: none;
-  border-top: 1px solid #000000;
-  margin: 10px 0;
-  width: 100%;
-}
- h4 {
-  
-  text-align: left;
-  font-size: 25; 
-} 
-.post-container h3 {
-  margin-right: auto;
-  font-size: 26px;
-  text-align: left ;
-}
-
-
-
-body {
-  background-color: #4968e6;
 }
 h1{
   text-align: center;
@@ -236,11 +186,21 @@ h1{
 }
 h2{
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.commentaire hr {
+  border: none;
+  border-top: 1px solid #000000;
+  margin: 10px 0;
+  width: 100%;
+}
+
+
+
+
 a {
   color: white;
   background-color: blue;
@@ -253,3 +213,15 @@ a:hover {
   background-color: lightblue;
 }
 
+/* utile à toute les pages Styles pour les liens hypertextes */
+.lien a {
+  color: #fff; 
+ text-decoration: none;
+ border-bottom: 1px solid #0077cc;
+}
+
+/* fixer le lien pour remonter la page */
+.scroll a[href="fils.php"] {
+  position: fixed;
+  bottom: 0;
+}

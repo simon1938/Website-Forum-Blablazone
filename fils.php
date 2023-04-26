@@ -6,8 +6,6 @@ require_once('accesbdd.php');
 session_start();
 //$id_utilisateur = $_SESSION['id'];
 $id_utilisateur=$_SESSION['id'];
-echo"===== utilisateur numero".$id_utilisateur."========";
-
 
 
 //affiche popup d'alerte pour verifier si l'utilisateur à pas deja liker le post 
@@ -15,8 +13,7 @@ if(isset($_GET['erreur'])){
 $message_erreur = urldecode($_GET['erreur']);
 // Afficher le message d'erreur dans un pop-up
 echo "<script>alert('" . $message_erreur . "')</script>";
-}
-    
+}    
 
 
 
@@ -58,9 +55,7 @@ while ($row = $result->fetch_assoc()) {
 if($test)
 {
  $sql2 = "SELECT * FROM post WHERE id_utilisateur IN (" . implode(",", $id_amis) . ") ORDER BY date_de_creation DESC";
-
-$result2 = $bdd->query($sql2);
-echo"test est vrai";
+ $result2 = $bdd->query($sql2);
 }
 ?>
 
@@ -102,33 +97,34 @@ echo"test est vrai";
                 ?>            
 
                 <div class="post-container">
-                <img src="<?php echo $row_amis['photo']; ?>" alt="Photo de profil">
+                    <img src="<?php echo $row_amis['photo']; ?>" alt="Photo de profil">
                 
                     
-                    <ul class="post-info">
-                        <p>Info :<p>
-                        <li>Post de : <?php echo $row_amis['nom_utilisateur']; ?></li>
-                        <li><?php echo $row['date_de_creation']; ?></li>
-                        <li><?php echo $nb_likes; ?> likes</li>
-                    </ul>                    
+                        <ul class="post-info">
+                            <p>Info :<p>
+                            <li>Post de : <?php echo $row_amis['nom_utilisateur']; ?></li>
+                            <li><?php echo $row['date_de_creation']; ?></li>
+                            <li><?php echo $nb_likes; ?> likes</li>
+                        </ul>                    
+                        
+                        <div class="content" style="text-align: left;">
+                        <p alt="contenu" style="display: inline;">contenu:</p>
+                        <p style="text-align: center;"><?php echo $row['contenu']; ?></p>
+                        </div>
 
-                    <div class="content">
-                        <p>contenu :</p>
-                    <p><?php echo $row['contenu']; ?></p>
-                    </div>
-                    
-                    <div class="buttons-container">
-                        <form method="post" action="ajouterlike.php">
-                        <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
-                        <button type="submit">Like</button>
-                        </form>
+                        
+                        <div class="buttons-container">
+                            <form method="post" action="ajouterlike.php">
+                            <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
+                            <button type="submit">Like</button>
+                            </form>
 
-                        <form method="POST" action="commentaire.php">
-                        <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
-                        <button type="submit" name="mon_bouton" value="<?php echo $row['id_post']; ?>">Voir les commentaire/Commenter</button>
-                        <?php $_SESSION['nom_utilisateurpost']=$row_amis['nom_utilisateur'];                                            
-                        ?>
-                        </form>
+                            <form method="POST" action="commentaire.php">
+                            <input type="hidden" name="id_post" value="<?php echo $row['id_post']; ?>">
+                            <button type="submit" name="mon_bouton" value="<?php echo $row['id_post']; ?>">Voir les commentaire/Commenter</button>
+                            <?php $_SESSION['nom_utilisateurpost']=$row_amis['nom_utilisateur'];                                            
+                            ?>
+                            </form>
                     </div>
                   
 

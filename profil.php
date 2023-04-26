@@ -38,6 +38,7 @@ echo '<img src="' .$Photo. '" alt="photo de profil">';?>
         <p><a href="ajouteramis.php">Ajouter des amis</a></p>
 		<p><a href="ajouterpost.php">Ajouter un poste</a></p>
 		<p><a href="voirlisteamis.php">Voir la liste d'amis</a></p>
+		<p><a href="modifierleprofil.php">Modifier son profil</a></p>
         <p><a href="fils.php">Voir votre fil d'actualité</a></p>             
         <p><a href="index.php">Se deconnecter</a></p> 
     </div>

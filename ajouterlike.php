@@ -26,7 +26,7 @@ if(mysqli_num_rows($result) > 0){
         $sql = "INSERT INTO post_like (user_id, post_id) VALUES ('$id_utilisateur', '$id_post')";
         $result = $bdd->query($sql);
         if($result){
-            $verif = "le post à bien été ajouté";    
+            $verif = " Votre like à bien été ajouté !";    
             header('Location: fils.php?erreur=' . urlencode($verif));        
             exit;
         } else {
