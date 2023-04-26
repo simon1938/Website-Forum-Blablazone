@@ -25,7 +25,7 @@
 		";
 		$bdd = connect_db();
 		$result = $bdd->query($sql);
-		echo "Nombre d'amis : ".$result->num_rows."<br>";
+		echo "<p>Nombre d'amis : ".$result->num_rows."<br><p>";
 
 		// Affichage des résultats
 		if ($result && $result->num_rows > 0) {

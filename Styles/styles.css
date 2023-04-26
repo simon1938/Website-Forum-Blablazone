@@ -3,6 +3,18 @@ body {
   background-color: #4968e6;
   padding: 0 20px;
 }
+/* style pour l'index.php  */
+.titreindex {
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.titreindex p {
+
+  font-size: 25px;
+  color: white;
+}
 /* style pour les balise h de  différente importance */
 h1{
   text-align: center;
@@ -28,6 +40,21 @@ form {
   color: white;
   font-size: 20px;
   text-align: center;
+}
+/* style des boutons pour envoyé des les formulaire de connextion de compte et création */
+input[type="submit"], input[type="button"] {
+  background-color: #3f51b5;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+  background-color: #2c3e50;
 }
 
 
@@ -59,10 +86,21 @@ img[alt="fp2"]{
   right: 10;
   padding: 10px;
   width: 25%;
-}
+}                                   
 
 /* bouton inscription et connexion de la page index */
 .inscription, .connexion {
+ display: inline-block;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background-color: #3f51b5;
+  color: #fff;
+  border-radius: 5px;
+  margin: 10px;
+  position: relative;
+}
+/* style des boutons de confirmation de motification ou suppression d'un post */
+.button_confirmation{
   display: inline-block;
   padding: 12px 24px;
   font-size: 1.2rem;
@@ -70,6 +108,7 @@ img[alt="fp2"]{
   color: #fff;
   border-radius: 5px;
   margin: 10px;
+  position: relative;
 }
 main {
   display: flex;
@@ -140,3 +179,9 @@ a {
  margin-top: 20px;
  margin-bottom: 20px;
 }
+footer{
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+}
+

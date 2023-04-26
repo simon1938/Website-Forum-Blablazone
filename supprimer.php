@@ -25,16 +25,18 @@ if(isset($_GET['id_post'])) {
     
     // Vérifiez si le post existe et affichez-le
     if($result->num_rows == 1) {
+
         $row = $result->fetch_assoc();
         echo '<h1>Supprimer le post</h1>';
         echo '<div>';
-        echo '<p>Voulez-vous vraiment supprimer le post suivant ?</p>';
-        echo '<p>'. $row['contenu'] .'</p>';
+        echo '<h2>Voulez-vous vraiment supprimer le post suivant ?</h2>';
+        echo '<div style="text-align:center;"><h3>'. $row['contenu'] .'</h3></div>';
         echo '</div>';
         echo '<div>';
         echo '<form method="POST">';
-        echo '<button type="submit" name="confirmer_suppression">Confirmer la suppression</button>';
-        echo '<button type="button" onclick="annulerSuppression()">Annuler</button>';
+        echo '<button class="button_confirmation" type="submit" name="confirmer_suppression">Confirmer la suppression</button>';
+        echo '<button class="button_confirmation" type="button" onclick="annulerSuppression()">Annuler</button>';
+
         echo '</form>';
 
         echo '</div>';

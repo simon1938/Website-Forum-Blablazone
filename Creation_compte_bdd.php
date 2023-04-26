@@ -52,8 +52,8 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 	if($email_erreur==false){
 
 		if ($bdd->query($sql) === TRUE) {
-			echo "Compte créé avec succès bravo !";
 
+			echo "Compte créé avec succès bravo !";
 			$verif = "Vous avez bien créer un compte bienvenu chez nous ".$_POST['pseudo'];    
 			
 			// Afficher le message d'erreur dans un pop-up puis rediriger vers page d'acceuil

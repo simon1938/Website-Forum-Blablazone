@@ -29,8 +29,9 @@ if(isset($_GET['id_post'])) {
         echo '<form method="POST">';
         echo '<label for="contenu">Contenu :</label>';
         echo '<textarea id="contenu" name="contenu" rows="5" cols="50">'. $contenu .'</textarea>'; // Affichez le contenu actuel dans le champ de texte
-        echo '<button type="submit" name="confirmer_modification">Confirmer la modification</button>';
-        echo '<button type="button" onclick="annulerModification()">Annuler</button>';
+        echo '<button class="button_confirmation" type="submit" name="confirmer_modification">Confirmer la modification</button>';
+        echo '<button class="button_confirmation" type="button" onclick="annulerModification()">Annuler</button>';
+
         echo '</form>';
     } else {
         echo "Le post n'existe pas.";
