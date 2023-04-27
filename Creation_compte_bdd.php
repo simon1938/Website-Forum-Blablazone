@@ -9,6 +9,7 @@
 <body>
 	<h1>Création de compte</h1>
 	<?php
+	error_reporting(E_ALL); ini_set('display_errors', 1);
 	$testmotdepasse=true;
 
 
@@ -19,9 +20,6 @@
 		$tmpName = $_FILES['file']['tmp_name'];
 		// Récupération du nom de l'image
 		$name = $_FILES['file']['name'];
-		// Récupération de la taille de l'image
-		$size = $_FILES['file']['size'];
-		$error = $_FILES['file']['error'];
 
 		if(is_uploaded_file($tmpName)){
 			
@@ -83,10 +81,10 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 			$verif = "Vous avez bien créer un compte bienvenu chez nous ".$_POST['pseudo'];    
 			
 			//Afficher le message d'erreur dans un pop-up puis rediriger vers page d'acceuil
-			// echo "<script>
-			// 					alert('" . $verif . "');
-			// 					window.location.href='index.php';
-    		// 	</script>";
+			echo "<script>
+								alert('" . $verif . "');
+								window.location.href='index.php';
+    			</script>";
 		} 
 }else {
 	echo "Erreur: un compte existe déjà sur cette adress mail veuillez directement vous connecter " ;

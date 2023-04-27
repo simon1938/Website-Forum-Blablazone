@@ -1,27 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Profil utilisateur</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="Styles\styles.css">
+    <title>Profil de <?php $_POST['nomutilisateur'] ?></title>
 </head>
 <body>
-
-
-<?php
-
+    
+</body>
+</html>
+<?php 
 include('accesbdd.php');
 // appel de la fonction connect_db()
 $bdd = connect_db();
-
 // Récupération de l'id de l'utilisateur connecté
 session_start();
 $id_utilisateur = (int)$_SESSION['id'];
-
+$nomamis=$_POST['nomutilisateur'];
 
 // Requête SQL pour récupérer les informations de l'utilisateur
-$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = '$id_utilisateur'";
+$sql = "SELECT id_utilisateur FROM utilisateur WHERE nom_utilisateur='$nomamis'";
+$result = $bdd->query($sql);
+if(isset($result)&&$result->num_rows===1){
+    $row = $result->fetch_assoc();
+    $id_ami=$row['id_utilisateur'];
+
+    //verifie que l'utilisateur ne s'ajoute pas lui meme
+    if($id_ami!=$id_utilisateur){
+        // Requête SQL pour récupérer les informations de l'utilisateur
+$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = '$id_ami'";
 $result = $bdd->query($sql);
 $row = $result->fetch_assoc();
 
@@ -35,18 +43,15 @@ echo '<p>Âge : ' . $Age . ' ans</p>';
 
 echo '<img src="' .$Photo. '" alt="photo de profil">';?>
 <div class ="lien">
-        <p><a href="ajouteramis.php">Ajouter des amis</a></p>
-		<p><a href="ajouterpost.php">Ajouter un poste</a></p>
-		<p><a href="voirlisteamis.php">Voir la liste d'amis</a></p>
-		<p><a href="voirprofil_amis.php">Voir le profil d'un utilisateur</a></p>
-		<p><a href="modifierleprofil.php">Modifier son profil</a></p>
-        <p><a href="fils.php">Voir votre fil d'actualité</a></p>             
+        
+		<p><a href="voirprofil_amis.php">Voir le profil d'un autre utilisateur</a></p>
+		<p><a href="modifierleprofil.php">Retourner sur votre profil</a></p>                    
         <p><a href="index.php">Se deconnecter</a></p> 
     </div>
 <?php
 
 // Requête SQL pour récupérer les dix derniers posts de l'utilisateur
-$sql = "SELECT * FROM post WHERE id_utilisateur = $id_utilisateur ORDER BY date_de_creation DESC LIMIT 10 ";
+$sql = "SELECT * FROM post WHERE id_utilisateur = $id_ami ORDER BY date_de_creation DESC LIMIT 10 ";
 $result = $bdd->query($sql);
 
 // Affichage des derniers posts de l'utilisateur
@@ -65,9 +70,7 @@ if ($result->num_rows > 0) {
 		
 		echo '<div class="post_fil">';
 		echo '<p>-- '.$row['contenu'].' --</p>';
-		echo '<div class="buttons">';
-		echo '<button onclick="supprimer(' . $row['id_post'] . ')">Supprimer</button>';
-		echo '<button onclick="modifier(' . $row['id_post'] . ')">Modifier</button>';
+		echo '<div class="buttons">';		
 		echo '</div>';
 		echo '</div><hr>';
 		
@@ -78,9 +81,7 @@ if ($result->num_rows > 0) {
 
 // Fermeture de la connexion
 $bdd->close();
-?>
-    
+    }
 
-	
-</body>
-</html>
+}
+?>

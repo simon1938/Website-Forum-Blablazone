@@ -7,8 +7,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<?php
-	
+					<?php
+					// Si le champs de l'image a été remplie (nouveau post ou modification de l'image d'un post existant)
+					if(isset($_FILES['file'])){
+							echo'azdjopjazd';
+						// Récupération du chemin temporaire de l'image
+						$tmpName = $_FILES['file']['tmp_name'];
+						// Récupération du nom de l'image
+						$name = $_FILES['file']['name'];
+
+						if(is_uploaded_file($tmpName)){
+							
+							$newName = "Pictures/".$name;
+							// Uploader l'image dans le dossier prévu
+							move_uploaded_file($tmpName, $newName);
+							$photo=$newName;
+					}else{
+						echo'azdazd';
+						$photo="Pictures/account_picture.png";
+					}
+				}
+				else
+				{
+					echo'azdazd';
+					$photo="Pictures/account_picture.png";	
+
+				}
 		// Connexion à la base de données
 		include('accesbdd.php');
 		$bdd = connect_db();
@@ -23,7 +47,7 @@
         $age= $_POST['age'];
         $motdepasse=$_POST['motdepasse'];
         $pseudo=$_POST['pseudo'];
-        $photo=$_POST['photo'];
+        
 		// Traitement du formulaire
 		if(!empty($age)){          
             

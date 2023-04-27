@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="Styles\styles.css">
+    <title>Ajouter amis</title>
+</head>
+<body>
+    
+</body>
+</html>
 <?php
 include('accesbdd.php');
 // appel de la fonction connect_db()
