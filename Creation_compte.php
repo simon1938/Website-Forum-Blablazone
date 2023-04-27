@@ -26,7 +26,7 @@
 	<input type="password" id="motdepasse2" name="motdepasse2" required><br>
 
 	<label for="age">Âge :</label>
-	<input type="number" id="age" name="age" min="18" required><br>
+	<input type="number" id="age" name="age" min="18" max ="120" required><br>
 
 	<label for="photo">Photo (facultatif) :</label>
 	<input type="file" id="file" name="file"><br>

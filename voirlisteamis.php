@@ -9,19 +9,21 @@
 	<h1>Ma liste d'amis</h1>
 
 	<?php
+		
 		require_once('accesbdd.php');
 
 		// Récupération de l'id de l'utilisateur connecté
 		session_start();
 		$id_utilisateur = $_SESSION['id'];
 
-		// Requête SQL pour récupérer la liste d'amis de l'utilisateur
+		// Requête pour récupérer la liste d'amis de l'utilisateur
 		$sql = "SELECT *
 		FROM amis 
 		INNER JOIN utilisateur ON (amis.id_ami = utilisateur.id_utilisateur OR amis.id_utilisateur = utilisateur.id_utilisateur) 
 		WHERE (amis.id_utilisateur = '$id_utilisateur' OR amis.id_ami = '$id_utilisateur') 
 		AND utilisateur.id_utilisateur != '$id_utilisateur'		
 		";
+		// Connexion à la bdd
 		$bdd = connect_db();
 		$result = $bdd->query($sql);
 		echo "<p>Nombre d'amis : ".$result->num_rows."<br><p>";
@@ -44,11 +46,14 @@
 		$bdd->close();
 
 	?>
-<div>	
+			<div>	
 				
-				<p><a href="index.php">Retourner à l'acceuil</a></p>       
-				
-				</div>	
+			      <!-- lien de navigation -->
+			<p><a href="ajouteramis.php">Ajouter des amis</a></p>			
+			<p><a href="voirprofil_amis.php">Voir le profil d'un utilisateur</a></p>			
+			<p><a href="fils.php">Retourner sur votre profil</a></p>             
+			<p><a href="index.php">Se deconnecter</a></p> 
+			</div>	
 
 </body>
 </html>

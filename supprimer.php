@@ -10,6 +10,7 @@
 </body>
 </html>
 <?php
+// connection bdd
 include('accesbdd.php');
 $bdd = connect_db();
 
@@ -17,13 +18,12 @@ $bdd = connect_db();
 if(isset($_GET['id_post'])) {
     $id_post = $_GET['id_post'];
     
-    // Requête SQL pour récupérer les informations du post
+    // Requête pour récupérer les informations du post
     $sql = "SELECT * FROM post WHERE id_post = $id_post";
-    $result = $bdd->query($sql);
+    $result = $bdd->query($sql);    
     
     
-    
-    // Vérifiez si le post existe et affichez-le
+    // Vérifiez si le post existe et affiche
     if($result->num_rows == 1) {
 
         $row = $result->fetch_assoc();
@@ -49,7 +49,8 @@ if(isset($_GET['id_post'])) {
 if(isset($_POST['confirmer_suppression'])) {
     $id_post = $_GET['id_post'];
 
-    // Requête SQL pour supprimer le post
+    // Requête pour supprimer le post
+    // mais aussi les likes associés et les commentaires
 
     $sql_likes = "DELETE FROM post_like WHERE post_id = $id_post";
     $sql_comments = "DELETE FROM commentaires WHERE id_post = $id_post";
@@ -84,7 +85,7 @@ if(isset($_POST['confirmer_suppression'])) {
 $bdd->close();
 ?>
 
-<!-- Code JavaScript pour le pop-up de confirmation -->
+<!-- JS pour pop-up de confirmation -->
 <script>     
     function annulerSuppression() {
         window.location.href = "profil.php";

@@ -9,47 +9,44 @@
 <body>
 	<h1>Création de compte</h1>
 	<?php
-	error_reporting(E_ALL); ini_set('display_errors', 1);
+	
 	$testmotdepasse=true;
 
-
-	// Si le champs de l'image a été remplie (nouveau post ou modification de l'image d'un post existant)
+	// vérifie si le champ file à été rempli
 	if(isset($_FILES['file'])){
 
 		// Récupération du chemin temporaire de l'image
 		$tmpName = $_FILES['file']['tmp_name'];
 		// Récupération du nom de l'image
 		$name = $_FILES['file']['name'];
-
+		//si le fichier à bien été upload
 		if(is_uploaded_file($tmpName)){
 			
 			$newName = "Pictures/".$name;
-			// Uploader l'image dans le dossier prévu
+			// Uploader l'image dans le dossier picture du projet
 			move_uploaded_file($tmpName, $newName);
 			$photo=$newName;
 	}else{
-		echo'azdazd';
+		//sinon photo de profil de base par défault
 		$photo="Pictures/account_picture.png";
 	}
 }
 else
 {
-	echo'azdazd';
+	//sinon photo de profil de base par défault
 	$photo="Pictures/account_picture.png";	
 
 }
   
- 
-echo $_POST['motdepasse'].$_POST['motdepasse2'].$_POST['email'].$_POST['pseudo'].$_POST['age'];
-
-// Vérifier si le formulaire a été soumis
+// Vérifier si les mot de passe correspondent
 if($_POST['motdepasse']!=$_POST['motdepasse2']){
 	$testmotdepasse=false;
 }
+// Vérifier si les champs sont remplis
 if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])&&$testmotdepasse) {
 	
 	include('accesbdd.php');
-	// appel de la fonction connect_db()
+	// appel bdd
 	$bdd = connect_db();
 	
 	// récupérer les données du formulaire
@@ -69,7 +66,7 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 
 									
 
-	// construire la requête SQL
+	// construire la requête SQL pour rentrer les infos dans la bdd
 	$sql = "INSERT INTO utilisateur (email,photo, nom_utilisateur,mot_de_passe, age) VALUES ('$email','$photo', '$pseudo','$motdepasse', '$age')";
 
 	// exécuter la requête SQL

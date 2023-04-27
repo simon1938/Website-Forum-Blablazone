@@ -12,14 +12,14 @@
 </html>
 <?php 
 include('accesbdd.php');
-// appel de la fonction connect_db()
+// connection bdd
 $bdd = connect_db();
 // Récupération de l'id de l'utilisateur connecté
 session_start();
 $id_utilisateur = (int)$_SESSION['id'];
 $nomamis=$_POST['nomutilisateur'];
 
-// Requête SQL pour récupérer les informations de l'utilisateur
+// Requête pour récupérer les informations de l'utilisateur
 $sql = "SELECT id_utilisateur FROM utilisateur WHERE nom_utilisateur='$nomamis'";
 $result = $bdd->query($sql);
 if(isset($result)&&$result->num_rows===1){
@@ -50,8 +50,8 @@ echo '<img src="' .$Photo. '" alt="photo de profil">';?>
     </div>
 <?php
 
-// Requête SQL pour récupérer les dix derniers posts de l'utilisateur
-$sql = "SELECT * FROM post WHERE id_utilisateur = $id_ami ORDER BY date_de_creation DESC LIMIT 10 ";
+// Requête pour récupérer les 15 dernier post de l'utilisateur
+$sql = "SELECT * FROM post WHERE id_utilisateur = $id_ami ORDER BY date_de_creation DESC LIMIT 15 ";
 $result = $bdd->query($sql);
 
 // Affichage des derniers posts de l'utilisateur

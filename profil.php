@@ -12,7 +12,7 @@
 <?php
 
 include('accesbdd.php');
-// appel de la fonction connect_db()
+// conenction bdd
 $bdd = connect_db();
 
 // Récupération de l'id de l'utilisateur connecté
@@ -20,7 +20,7 @@ session_start();
 $id_utilisateur = (int)$_SESSION['id'];
 
 
-// Requête SQL pour récupérer les informations de l'utilisateur
+// Requête pour récupérer les informations de l'utilisateur
 $sql = "SELECT * FROM utilisateur WHERE id_utilisateur = '$id_utilisateur'";
 $result = $bdd->query($sql);
 $row = $result->fetch_assoc();
@@ -34,6 +34,7 @@ echo '<h1>Profil de '.$NomUilisateur.'<h1>';
 echo '<p>Âge : ' . $Age . ' ans</p>';
 
 echo '<img src="' .$Photo. '" alt="photo de profil">';?>
+<!-- lien de navigation  -->
 <div class ="lien">
         <p><a href="ajouteramis.php">Ajouter des amis</a></p>
 		<p><a href="ajouterpost.php">Ajouter un poste</a></p>
@@ -45,7 +46,7 @@ echo '<img src="' .$Photo. '" alt="photo de profil">';?>
     </div>
 <?php
 
-// Requête SQL pour récupérer les dix derniers posts de l'utilisateur
+// Requête pour récupérer les posts de l'utilisateur du plus recent ou plus vieux
 $sql = "SELECT * FROM post WHERE id_utilisateur = $id_utilisateur ORDER BY date_de_creation DESC LIMIT 10 ";
 $result = $bdd->query($sql);
 

@@ -1,23 +1,23 @@
 <?php
-// On inclut la fonction de connexion à la base de données
+// connection à la bdd
 include("accesbdd.php");
 
 session_start();
 $id=$_SESSION['id'];
 
-// On vérifie si le formulaire a été soumis
+// Verifie si le formulaire a été soumis
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	// On récupère le contenu du post
-	$contenu = $_POST["contenu"];
+	$contenu = $_POST["contenu"];	
 
-	// On crée une instance de la base de données
+	// connection à la base de donnée (instance de celle ci)
 	$bdd = connect_db();
-
-	// On prépare la requête SQL pour insérer le post dans la table "post"
-    echo $id;
+	$contenu = $_POST["contenu"];
+	$contenu = mysqli_real_escape_string($bdd, $contenu);
+	// SQL pour insérer le post dans la table "post"
 	$sql = "INSERT INTO post (contenu, date_de_creation, id_utilisateur) VALUES ('$contenu', NOW(), $id)";
 
-	// On exécute la requête SQL
+	//  exécute la requête 
 	if ($bdd->query($sql) === TRUE) {
 		echo '<script>alert("Le post a été ajouté avec succès !"); window.location.href = "profil.php";</script>';
 	} else {
@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 	
 
-	// On ferme la connexion à la base de données
+	// fermer bdd
 	$bdd->close();
 }
 ?>

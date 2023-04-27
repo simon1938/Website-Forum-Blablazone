@@ -1,13 +1,14 @@
 <?php
-// Connexion à la base de données
+// Connexion à bdd
 require_once "accesbdd.php";
 $bdd = connect_db();
-// Récupération de l'id_utilisateur à partir de la session
+// Récupération de l'id_utilisateur 
 session_start();
 
 // Récupération des données du formulaire
 $commentaire = $_POST['commentaire'];
-$id_post = $_SESSION['id_post']; // Il faudra ajouter un champ caché dans le formulaire pour récupérer l'id_post
+$commentaire = mysqli_real_escape_string($bdd, $commentaire);
+$id_post = $_SESSION['id_post']; 
 
 
 $id_utilisateur = $_SESSION['id'];

@@ -10,13 +10,13 @@
 <body>
     <h1>Voici le commentaire que vous avez selectionner ! n'hesitez pas à laisser un petit commentaire !</h1>
     <?php
-    // Connexion à la base de données
+    // Connexion à bdd
     require_once "accesbdd.php";
     $bdd = connect_db();
 
     // Récupération du post et des commentaires correspondants
     //recuper l'id du post via le formulaire et pour eviter les erreurs lord du
-    // reload de la page on stocke dans variable session 
+    // reload de la page et on stocke dans variable session 
     session_start(); 
     if(isset($_POST['id_post'])){  
     $_SESSION['id_post'] = $_POST['id_post'];    
@@ -25,27 +25,27 @@
     
 	$nom_utilisateur_post=$_SESSION['nom_utilisateurpost'];
     $id=$_SESSION['id'];
-	echo $id_post;
+    // selectionner le post à commenter
     $query_post = "SELECT * FROM post WHERE id_post = '$id_post'";
     $result_post = mysqli_query($bdd, $query_post);
-	if($result_post->num_rows>0){
-		
+	if($result_post->num_rows>0){		
 	
     $post = mysqli_fetch_assoc($result_post);
-
+        // selectionner les commentaires de ce post
     $query_comments = "SELECT * FROM commentaires WHERE id_post = '$id_post' ORDER BY date_de_creation DESC";
     $result_comments = mysqli_query($bdd, $query_comments);
     
     $contenu=$post['contenu'];
     $date_de_creation=$post['date_de_creation'];    
-// petite requete pour affiche la photo de profil de la personne qui à écrit le post que l'on veux commenter 
+
+// petite requete pour afficher la photo de profil de la personne qui à écrit le post que l'on veux commenter 
     $query = "SELECT photo FROM utilisateur UTL INNER JOIN post POS ON POS.id_utilisateur=UTL.id_utilisateur WHERE
      POS.id_post = $id_post" ;
     $result = mysqli_query($bdd, $query);
     $row=mysqli_fetch_assoc($result);
 
     ?>
-<!-- ici c'est l'affichage du post  -->
+<!-- l'affichage du post  -->
       
           <div class="post-container">
                 <h3>Post</h3>
@@ -67,7 +67,7 @@
         <textarea id="commentaire" name="commentaire"></textarea><br>
         <input type="submit" value="Ajouter le commentaire">             
     </form>
-
+        <!-- lien de navigation -->
     <div>    
         <p><a href="profil.php">Revenir au Profil</a></p>
         <p><a href="fils.php">Retourner au fil d'actualité</a></p>
@@ -76,7 +76,7 @@
 
     <h2>Commentaires du post selectionné : </h2>
     <?php
-    
+    // partie qui affiche les commentaires lié au post
 	if($result_comments->num_rows>0){
 		while ($comment = mysqli_fetch_assoc($result_comments))
 		{

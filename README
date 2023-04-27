@@ -3,16 +3,33 @@ Nom du projet Blablazone
 But du projet concevoir un site qui permet un echange direct entre perso autour de post et commentaire de post
 
 Liste de compte auquel se connecter :
--
--
--
--
--
+    email           ||     mot de passe
 
-chose que je pense avoir rajouté en plus 
+- a@a                       a
+- tomt@gmail.com            tom
+- beber                      be
+- remi_le_grand             re
+- chat@chat                 CHAT
+
+
+chose que je pense avoir rajouté en plus:
+
 -systeme de commentaire pour post 
 -possibilité de modifier son profil
+-possibilité de rechercher un utilisateur pour consulter son profil 
 -affichage de la liste d'amis
--classe de style pour le css
+-upload de la photo depuis pc (pas de copier coller de chemin)
 
-les images de profil on été générées par ia 
+Quelques images de profil et les logo on été générées par ia 
+
+
+
+
+J'ai essayé de faire des couple de fichier (différencier par bdd):
+
+des fichiers plus html style formulaire ou affichage 
+et les autre plus php et requetes sql
+
+Par exemple :
+Creation_compte.php
+Creation_compte_bdd.php

@@ -10,7 +10,7 @@
 <?php
 
 include('accesbdd.php');
-// appel de la fonction connect_db()
+// appel bdd
 $bdd = connect_db();
 
 // Vérification si le formulaire a été soumis
@@ -21,7 +21,7 @@ if (isset($_POST['email'],$_POST['motdepasse'])) {
     $motdepasse = md5($_POST['motdepasse']);
  
 
-    // Requête SQL pour vérifier si l'utilisateur existe dans la base de données
+    // Requête pour vérifier si l'utilisateur existe dans la base de données
     $sql = "SELECT * FROM utilisateur WHERE email = '$email' AND mot_de_passe = '$motdepasse'";
     $result = $bdd->query($sql);
     

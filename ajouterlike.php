@@ -1,12 +1,10 @@
 <?php
-// inclure le fichier d'accès à la base de données
+// fichier pour se connecter à la bdd
 require_once('accesbdd.php');
 
-
-// Vérifier si le formulaire a été soumis et si l'utilisateur est connecté
 session_start();
 $bdd = connect_db();
-
+// Verifie si le formulaire a été soumis et si l'utilisateur est connecté
 if(isset($_SESSION['id']) && isset($_POST['id_post'])) {
 
     // Récupérer les données du formulaire
@@ -14,7 +12,7 @@ if(isset($_SESSION['id']) && isset($_POST['id_post'])) {
     $id_post = $_POST['id_post'];
 
 
-// Vérifier si l'utilisateur a déjà aimé ce post
+// Verifie si l'utilisateur a déjà aimé ce post
 $sql = "SELECT * FROM post_like WHERE user_id='$id_utilisateur' AND post_id='$id_post'";
 $result = $bdd->query($sql);
 if(mysqli_num_rows($result) > 0){

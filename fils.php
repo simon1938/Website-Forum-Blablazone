@@ -1,10 +1,9 @@
 <?php
-// inclure le fichier d'accès à la base de données
+// acces bdd
 require_once('accesbdd.php');
 
 // Récupération de l'id de l'utilisateur connecté
 session_start();
-//$id_utilisateur = $_SESSION['id'];
 $id_utilisateur=$_SESSION['id'];
 
 
@@ -16,10 +15,8 @@ echo "<script>alert('" . $message_erreur . "')</script>";
 }    
 
 
-
 // Requête SQL pour récupérer la liste d'amis de l'utilisateur
 $bdd = connect_db();
-
 $sql = "SELECT * FROM amis WHERE id_utilisateur = '$id_utilisateur'OR id_ami = '$id_utilisateur'";
 $result = $bdd->query($sql);
 if($result->num_rows==0){
@@ -32,7 +29,6 @@ if($result->num_rows==0){
 
 // Création d'un tableau pour stocker les id des amis
 $id_amis = array();
-//debugecho "Nombre de résultats : ".$result->num_rows."<br>";
 // Parcourir les résultats de la requête pour récupérer les id des amis
 while ($row = $result->fetch_assoc()) {
     if($row['id_ami']==$id_utilisateur)
@@ -44,12 +40,6 @@ while ($row = $result->fetch_assoc()) {
         $id_amis[] = $row['id_ami'];
     }
 }
-
-//debug
-// print_r($id_amis);
-// //print("=")
-// print_r(implode(",", $id_amis));
-// //print("=");
 
 // Requête SQL pour récupérer les posts des amis de l'utilisateur
 if($test)
@@ -69,6 +59,7 @@ if($test)
 </head>
 <body>
     <h1>Fils Twitter</h1>
+    <!-- lien de navigation -->
     <div class ="lien">
          <p><a href="ajouterpost.php">Ajouter un poste</a></p>
         <p><a href="ajouteramis.php">Ajouter des amis</a></p>
@@ -87,15 +78,17 @@ if($test)
                 $row_amis=$result_amis->fetch_assoc();
 
  
-                // Requête SQL pour récupérer le nombre de likes du post            
+                // Requête pour récupérer le nombre de likes du post            
                 $id_post = $row['id_post'];
-                // Requête SQL pour récupérer le nombre de likes du post
+                // Requête pour récupérer le nombre de likes du post
                 $sql = "SELECT COUNT(*) as nb_likes FROM `post_like` WHERE post_id = $id_post";
                 $result = $bdd->query($sql);
                 $row_like = $result->fetch_assoc();
                 $nb_likes = $row_like['nb_likes'];
                 ?>            
-
+                <!-- Tout le contenu de chaque post est ranger dans
+                une class "post-container" dans le fil d'actualité -->
+                <!-- le but c'est pour que se soit plus simple pour le css -->
                 <div class="post-container">
                     <img src="<?php echo $row_amis['photo']; ?>" alt="Photo de profil">
                 
@@ -138,8 +131,8 @@ if($test)
         else
         {
             ?>
-            <p><?php echo "Vous n'avez pas encore d'amis"; ?></p>
-            <p><?php echo "ajouter des amis pour pouvoir construire votre propre fils d'actualité !";?></p>
+            <p><?php echo "Vous n'avez pas encore d'amis ou vous amis n'ont rien posté encore"; ?></p>
+            <p><?php echo "Ajouter des amis pour pouvoir construire votre propre fils d'actualité !";?></p>
             <?php } ?>
     
   

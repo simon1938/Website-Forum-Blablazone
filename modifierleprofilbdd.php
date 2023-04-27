@@ -8,7 +8,7 @@
 </head>
 <body>
 					<?php
-					// Si le champs de l'image a été remplie (nouveau post ou modification de l'image d'un post existant)
+					// voir si champs file rempli 
 					if(isset($_FILES['file'])){
 							echo'azdjopjazd';
 						// Récupération du chemin temporaire de l'image
@@ -19,21 +19,21 @@
 						if(is_uploaded_file($tmpName)){
 							
 							$newName = "Pictures/".$name;
-							// Uploader l'image dans le dossier prévu
+							// Uploader l'image dans le dossier picture
 							move_uploaded_file($tmpName, $newName);
 							$photo=$newName;
 					}else{
-						echo'azdazd';
+						//sinon photo par défault
 						$photo="Pictures/account_picture.png";
 					}
 				}
 				else
 				{
-					echo'azdazd';
+					//sinon photo par défault
 					$photo="Pictures/account_picture.png";	
 
 				}
-		// Connexion à la base de données
+		// Connexion à bdd
 		include('accesbdd.php');
 		$bdd = connect_db();
 
@@ -48,7 +48,9 @@
         $motdepasse=$_POST['motdepasse'];
         $pseudo=$_POST['pseudo'];
         
-		// Traitement du formulaire
+		// Traitement du formulaire ici on vérifie si le contenu est vide ou pas car
+		// si il est vide on garde les informations que l'utilisateur avait avant
+		//cela évite que si il veut juste changer de nom il n'ai à changer tout son profil
 		if(!empty($age)){          
             
 				$sql = "UPDATE utilisateur SET age = '$age' WHERE id_utilisateur = '$id_utilisateur'";
@@ -74,7 +76,7 @@
 				echo '<p>L\'photo a été mis à jour.</p>';
         }
 ?>
-
+			<!-- lien de naviguation  -->
 				<div>	
 				<p><a href="profil.php">Revenir au Profil</a></p>
 				<p><a href="fils.php">Retourner au fil d'actualité</a></p>

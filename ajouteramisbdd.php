@@ -12,33 +12,32 @@
 </html>
 <?php
 include('accesbdd.php');
-// appel de la fonction connect_db()
+// Connection base de donnée
 $bdd = connect_db();
 // Récupération de l'id de l'utilisateur connecté
 session_start();
 $id_utilisateur = (int)$_SESSION['id'];
 $nomamis=$_POST['nomutilisateur'];
 
-// Requête SQL pour récupérer les informations de l'utilisateur
+//Récupère les informations de l'amis à qui on souhaite voir le profil
 $sql = "SELECT id_utilisateur FROM utilisateur WHERE nom_utilisateur='$nomamis'";
 $result = $bdd->query($sql);
 if(isset($result)&&$result->num_rows===1){
     $row = $result->fetch_assoc();
     $id_ami=$row['id_utilisateur'];
 
-    //verifie que l'utilisateur ne s'ajoute pas lui meme
+    //verifie que l'utilisateur ne s'ajoute pas lui même
     if($id_ami!=$id_utilisateur){
         // verification que deux amis ne s'ajoutent pas encore si il sont déjà amis 
-        echo  $id_utilisateur."==".$id_ami;
+        
         $sql = "SELECT id_amis FROM amis WHERE (id_utilisateur = $id_utilisateur AND id_ami = $id_ami) OR (id_utilisateur = $id_ami AND id_ami = $id_utilisateur)";
         $result = $bdd->query($sql);
     
         if($result->num_rows===0){
-            //on l'ajoute 
-            echo '<h1>super</h1>';
-            echo 'ajout de amis en cour ';
+            
+            echo '<h1>super</h1>';           
 
-            //ajout de l'amis à notre utilisateur connecter
+            //ajout de l'amis à notre utilisateur connecté
             $sql = "INSERT INTO amis (id_utilisateur, id_ami) VALUES ($id_utilisateur, $id_ami)";
             $result = $bdd->query($sql);
             
@@ -64,7 +63,7 @@ if(isset($result)&&$result->num_rows===1){
 }
 
 ?>
-
+                <!-- lien de navigation -->
                 <div>	
 				<p><a href="profil.php">Revenir au Profil</a></p>
 				<p><a href="fils.php">Retourner au fil d'actualité</a></p>
