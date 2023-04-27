@@ -79,6 +79,11 @@ img[alt="fp"]{
   width: 15%;
 
 }
+/* taille à ne pas dépasser pour les image pour ne pas avoir de probleme d'affichage  */
+img {
+  max-width: 400px;
+  max-height: 400px;
+}
 /* image page slogan du blablazone */
 img[alt="fp2"]{
   position: fixed;

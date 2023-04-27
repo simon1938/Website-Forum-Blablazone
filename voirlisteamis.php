@@ -20,8 +20,7 @@
 		FROM amis 
 		INNER JOIN utilisateur ON (amis.id_ami = utilisateur.id_utilisateur OR amis.id_utilisateur = utilisateur.id_utilisateur) 
 		WHERE (amis.id_utilisateur = '$id_utilisateur' OR amis.id_ami = '$id_utilisateur') 
-		AND utilisateur.id_utilisateur != '$id_utilisateur'
-		
+		AND utilisateur.id_utilisateur != '$id_utilisateur'		
 		";
 		$bdd = connect_db();
 		$result = $bdd->query($sql);

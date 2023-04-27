@@ -8,9 +8,42 @@
 </head>
 <body>
 	<h1>Création de compte</h1>
-
 	<?php
 	$testmotdepasse=true;
+
+
+	// Si le champs de l'image a été remplie (nouveau post ou modification de l'image d'un post existant)
+	if(isset($_FILES['file'])){
+
+		// Récupération du chemin temporaire de l'image
+		$tmpName = $_FILES['file']['tmp_name'];
+		// Récupération du nom de l'image
+		$name = $_FILES['file']['name'];
+		// Récupération de la taille de l'image
+		$size = $_FILES['file']['size'];
+		$error = $_FILES['file']['error'];
+
+		if(is_uploaded_file($tmpName)){
+			
+			$newName = "Pictures/".$name;
+			// Uploader l'image dans le dossier prévu
+			move_uploaded_file($tmpName, $newName);
+			$photo=$newName;
+	}else{
+		echo'azdazd';
+		$photo="Pictures/account_picture.png";
+	}
+}
+else
+{
+	echo'azdazd';
+	$photo="Pictures/account_picture.png";	
+
+}
+  
+ 
+echo $_POST['motdepasse'].$_POST['motdepasse2'].$_POST['email'].$_POST['pseudo'].$_POST['age'];
+
 // Vérifier si le formulaire a été soumis
 if($_POST['motdepasse']!=$_POST['motdepasse2']){
 	$testmotdepasse=false;
@@ -26,15 +59,6 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 	$pseudo = $_POST['pseudo'];
 	$age = $_POST['age'];
 	$motdepasse=md5($_POST['motdepasse']);
-	if($_POST['photo']!=""){
-		$photo=$_POST['photo'];	
-		echo "<script>alert('" . "eefj" . "')</script>";	
-	}
-	else
-	{
-		$photo="Pictures/account_picture.png";	
-
-	}
 	
 	// Vérifier si l'email n'existe pas déjà dans la base de données
 
@@ -44,6 +68,8 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 	if ($result_check_email->num_rows > 0) {
 		$email_erreur=TRUE;
 	}
+
+									
 
 	// construire la requête SQL
 	$sql = "INSERT INTO utilisateur (email,photo, nom_utilisateur,mot_de_passe, age) VALUES ('$email','$photo', '$pseudo','$motdepasse', '$age')";
@@ -56,11 +82,11 @@ if (isset($_POST['email'], $_POST['pseudo'],$_POST['motdepasse'], $_POST['age'])
 			echo "Compte créé avec succès bravo !";
 			$verif = "Vous avez bien créer un compte bienvenu chez nous ".$_POST['pseudo'];    
 			
-			// Afficher le message d'erreur dans un pop-up puis rediriger vers page d'acceuil
-			echo "<script>
-								alert('" . $verif . "');
-								window.location.href='index.php';
-    			</script>";
+			//Afficher le message d'erreur dans un pop-up puis rediriger vers page d'acceuil
+			// echo "<script>
+			// 					alert('" . $verif . "');
+			// 					window.location.href='index.php';
+    		// 	</script>";
 		} 
 }else {
 	echo "Erreur: un compte existe déjà sur cette adress mail veuillez directement vous connecter " ;
