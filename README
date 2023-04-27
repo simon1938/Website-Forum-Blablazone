@@ -1,35 +1,52 @@
-Projet simon illouz laurent WE4A
-Nom du projet Blablazone
-But du projet concevoir un site qui permet un echange direct entre perso autour de post et commentaire de post
+Voici une proposition de correction pour votre README:
 
-Liste de compte auquel se connecter :
-    email           ||     mot de passe
+# Blablazone
 
-- a@a                       a
-- tomt@gmail.com            tom
-- beber                      be
-- remi_le_grand             re
-- chat@chat                 CHAT
+Blablazone est un site web permettant un échange direct entre utilisateurs autour de posts et commentaires.
 
+## Comptes de test
 
-chose que je pense avoir rajouté en plus:
+Pour tester le site, vous pouvez utiliser les comptes suivants :
 
--systeme de commentaire pour post 
--possibilité de modifier son profil
--possibilité de rechercher un utilisateur pour consulter son profil 
--affichage de la liste d'amis
--upload de la photo depuis pc (pas de copier coller de chemin)
+| Email            | Mot de passe |
+|------------------|--------------|
+| a@a               | a            |
+| tomt@gmail.com    | tom          |
+| beber             | be           |
+| remi_le_grand     | re           |
+| chat@chat         | CHAT         |
 
-Quelques images de profil et les logo on été générées par ia 
+## Fonctionnalités
 
+Le site permet les fonctionnalités suivantes :
 
+- Système de commentaires pour les posts
+- Possibilité de modifier son profil
+- Possibilité de rechercher un utilisateur pour consulter son profil
+- Affichage de la liste d'amis
+- Upload de la photo depuis l'ordinateur (pas de copier-coller de chemin)
 
+Certaines images de profil et les logos ont été générés par une IA.
 
-J'ai essayé de faire des couple de fichier (différencier par bdd):
+## Structure des fichiers
 
-des fichiers plus html style formulaire ou affichage 
-et les autre plus php et requetes sql
+Les fichiers sont organisés en couples, différenciés par la base de données :
+
+- Les fichiers HTML pour les formulaires ou l'affichage
+- Les fichiers PHP pour les requêtes SQL
 
 Par exemple :
-Creation_compte.php
-Creation_compte_bdd.php
+
+- `creation_compte.php`
+- `creation_compte_bdd.php`
+
+## Versions utilisées
+
+- PHP 5.6.18
+- MySQL 5.7.11
+
+Pour vous connecter à la base de données, vous devez modifier le fichier `accesbdd.php` avec vos identifiants.
+
+## Auteurs
+
+- Simon Illouz--Laurent
