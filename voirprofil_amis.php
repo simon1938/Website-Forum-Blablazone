@@ -6,7 +6,7 @@
   <title>Voir profil de vous amis</title>
 </head>
 <body>
-  <h1>Ecrivez le pseudo de l'utilisateur dont vous soulez conulter le profil !</h1>
+  <h1>Ecrivez le pseudo de l'utilisateur dont vous voulez consulter le profil !</h1>
   <form action="voirprofil_amis_bdd.php" method="POST" >
     <label for="nomutilisateur">Nom d'utilisateur:</label>
     <input type="nomutilisateur" id="nom" name="nomutilisateur" required><br>    

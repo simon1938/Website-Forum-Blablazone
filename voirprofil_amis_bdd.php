@@ -42,12 +42,7 @@ echo '<h1>Profil de '.$NomUilisateur.'<h1>';
 echo '<p>Âge : ' . $Age . ' ans</p>';
 
 echo '<img src="' .$Photo. '" alt="photo de profil">';?>
-<div class ="lien">
-        
-		<p><a href="voirprofil_amis.php">Voir le profil d'un autre utilisateur</a></p>
-		<p><a href="modifierleprofil.php">Retourner sur votre profil</a></p>                    
-        <p><a href="index.php">Se deconnecter</a></p> 
-    </div>
+
 <?php
 
 // Requête pour récupérer les 15 dernier post de l'utilisateur
@@ -82,6 +77,20 @@ if ($result->num_rows > 0) {
 // Fermeture de la connexion
 $bdd->close();
     }
+    else
+    {
+        echo '<h1>Erreur, vous ne pouvez pas vous voir vous meme</h1>';
+    }
 
 }
-?>
+else
+{
+    echo '<h1>Erreur, utilisateur introuvable</h1>';
+}
+    
+?><div class ="lien">
+        
+<p><a href="voirprofil_amis.php">Voir le profil d'un autre utilisateur</a></p>
+<p><a href="modifierleprofil.php">Retourner sur votre profil</a></p>                    
+<p><a href="index.php">Se deconnecter</a></p> 
+</div>

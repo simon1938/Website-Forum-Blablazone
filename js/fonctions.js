@@ -1,3 +1,4 @@
+//fonction de redirection
 function rediriger_creationC() {
     window.location.href = "Creation_compte.php";
   }  
@@ -16,6 +17,7 @@ function rediriger_creationC() {
   function rediriger_ajouterpost() {
     window.location.href = "ajouterpost.php";
   }
+  //fonction pour supprimer /modier post on garde l'id du post dans l'url et on recupère avec un get
   function supprimer(id_post) {
     window.location.href = 'supprimer.php?id_post=' + id_post;
   }
