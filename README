@@ -1,52 +1,35 @@
-Voici une proposition de correction pour votre README:
-
 # Blablazone
 
-Blablazone est un site web permettant un échange direct entre utilisateurs autour de posts et commentaires.
+Blablazone is a website that allows direct exchange between users through posts and comments.
 
-## Comptes de test
+## Test Accounts
 
-Pour tester le site, vous pouvez utiliser les comptes suivants :
+To test the website, you can use the following accounts:
 
-| Email            | Mot de passe |
+| Email            | Password |
 |------------------|--------------|
 | a@a               | a            |
-| tomt@gmail.com    | tom          |
-| beber             | be           |
-| remi_le_grand     | re           |
 | chat@chat         | CHAT         |
 
-## Fonctionnalités
+## Features
 
-Le site permet les fonctionnalités suivantes :
+The website includes the following features:
 
-- Système de commentaires pour les posts
-- Possibilité de modifier son profil
-- Possibilité de rechercher un utilisateur pour consulter son profil
-- Affichage de la liste d'amis
-- Upload de la photo depuis l'ordinateur (pas de copier-coller de chemin)
+- Commenting system for posts
+- Ability to modify user profile
+- Ability to search for a user and view their profile
+- Displaying the friend list
+- Uploading profile picture from the computer 
 
-Certaines images de profil et les logos ont été générés par une IA.
+Some profile images and logos have been generated using AI.
 
-## Structure des fichiers
-
-Les fichiers sont organisés en couples, différenciés par la base de données :
-
-- Les fichiers HTML pour les formulaires ou l'affichage
-- Les fichiers PHP pour les requêtes SQL
-
-Par exemple :
-
-- `creation_compte.php`
-- `creation_compte_bdd.php`
-
-## Versions utilisées
+## Used Versions
 
 - PHP 5.6.18
 - MySQL 5.7.11
 
-Pour vous connecter à la base de données, vous devez modifier le fichier `accesbdd.php` avec vos identifiants.
+To connect to the database, you need to modify the `accesbdd.php` file with your credentials.
 
-## Auteurs
+## Authors
 
 - Simon Illouz--Laurent
